@@ -83,7 +83,7 @@
       <div>
         <h2 class="font-display text-5xl md:text-6xl mb-12">ABOUT</h2>
         <div class="space-y-8 text-lg md:text-xl leading-relaxed text-white/80 max-w-3xl">
-          <p>Video producer and creative professional with hands-on experience leading post-production and storytelling at Creation Studios in Memphis. I specialize in crafting clear, compelling narratives that support brand goals, marketing campaigns, and client objectives.</p>
+          <p>Video producer and creative professional with hands-on experience leading production, post-production, and storytelling at Creation Studios in Memphis. I specialize in crafting clear, compelling narratives that support brand goals, marketing campaigns, and client objectives.</p>
           <p>My work spans commercial, documentary, brand, and communications projects—focusing on quality storytelling, efficient production workflows, and results that move audiences. I’m currently exploring opportunities that blend video production with communications and marketing strategy.</p>
           <p>Based in Memphis, TN. Open to roles in video production, content creation, and related creative communications work.</p>
         </div>
@@ -120,26 +120,19 @@
       <div class="mb-4">
         <p class="text-xs tracking-widest uppercase text-white/40 mb-3">Category</p>
         <div class="flex flex-wrap gap-3" id="category-filters">
-          <button class="filter-btn cat-btn active px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="all">All</button>
-          <button class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="commercial">Commercial</button>
-          <button class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="brand">Brand</button>
-          <button class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="documentary">Documentary</button>
-          <button class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="marketing">Marketing</button>
-          <button class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="social">Social</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="commercial" aria-pressed="false">Commercial</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="brand" aria-pressed="false">Brand</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="documentary" aria-pressed="false">Documentary</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="marketing" aria-pressed="false">Marketing</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="social" aria-pressed="false">Social</button>
         </div>
       </div>
 
       <div class="mb-12">
         <p class="text-xs tracking-widest uppercase text-white/40 mb-3">Role</p>
         <div class="flex flex-wrap gap-3" id="role-filters">
-          <button class="filter-btn role-btn active px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="all">All</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="director">Director</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="editor">Editor</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="cinematographer">Cinematographer</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="drone-cinematographer">Drone Cinematographer</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="audio">Audio</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="animator">Animator</button>
-          <button class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="all-roles">All Roles</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="editor" aria-pressed="false">Editor</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="cinematographer" aria-pressed="false">Cinematographer</button>
         </div>
       </div>
 
@@ -213,7 +206,7 @@
     // Project data — set featured: true for Highlighted Work pieces.
     // role: "director" | "editor" | "cinematographer" | "drone-cinematographer" | "audio" | "animator" | "director-editor" | "editor-cinematographer" | "editor-cinematographer-drone" | "editor-audio" | "editor-animator" | "cinematographer-drone" | "cinematographer-drone-audio" | "all-roles"
     const projects = [
-      { title: "Memphis School of Excellence 15 Year Anniversary Video", category: "marketing", role: "cinematographer-drone", featured: false, client: "Memphis School of Excellence", synopsis: "Memphis School of Excellence wanted a video to celebrate their 15 years of making a difference in the lives of students.", vimeoId: "1235525498" },
+      { title: "Memphis School of Excellence 15 Year Anniversary Video", category: "marketing", role: "cinematographer", featured: false, client: "Memphis School of Excellence", synopsis: "Memphis School of Excellence wanted a video to celebrate their 15 years of making a difference in the lives of students.", vimeoId: "1235525498" },
       { title: "Creation Studios Reel", category: "", role: "all-roles", featured: true, client: "Creation Studios", synopsis: "This is Creation Studios' most updated cinematography reel showcasing beautiful imagery.", vimeoId: "1235518884" },
       { title: "UNBOWED Pitch Video", category: "documentary", role: "editor-cinematographer", featured: true, client: "PURE Academy", synopsis: "This video was made as a pitch for a longer, multi-episodic docuseries about an inner city boarding school in the heart of Memphis, TN. I was the editor and cinematographer.", vimeoId: "1235528644" },
       { title: "The Road to 10 Million", category: "documentary", role: "cinematographer-drone", featured: true, client: "Samaritan's Feet", synopsis: "This project for Samaritan's Feet involved multi-location shoots including South Africa. This story encompassed everything Samaritan's Feet has been up until now and everything it plans to do moving forward. It celebrated their giving away of their 10 millionth pair of shoes!", vimeoId: "1235912938" },
@@ -230,23 +223,23 @@
       { title: "State of St. Jude 2023", category: "documentary", role: "cinematographer", featured: false, client: "St. Jude", synopsis: "The State of St. Jude gave employees an opportunity to learn about important progresses that have been made at St. Jude.", vimeoId: "1235908768" },
       { title: "Memphis Boat Center Vision", category: "documentary", role: "cinematographer", featured: false, client: "Memphis Boat Center", synopsis: "This story focuses on the history of Memphis Boat Center and all the joy that comes with owning a boat.", vimeoId: "1235908513" },
       { title: "Executive Speakers Bureau Vision", category: "brand", role: "cinematographer", featured: false, client: "Executive Speakers Bureau", synopsis: "With this project, multi-location shoots led to us telling the story of Executive Speakers Bureau and how it represents Speakers so they can effectively communicate their messages to the world.", vimeoId: "1235908515" },
-      { title: "Pickering Vision Video", category: "brand", role: "cinematographer-drone", featured: false, client: "Pickering Firm", synopsis: "We made a vision video for the Pickering Firm to showcase how they best provide for their clients and the people that work for them.", vimeoId: "1235908353" },
-      { title: "IMC Driver Welcome", category: "brand", role: "editor-audio", featured: false, client: "IMC", synopsis: "We made a video for IMC to welcome new drivers into their organization.", vimeoId: "1235908360" },
+      { title: "Pickering Vision Video", category: "brand", role: "cinematographer", featured: false, client: "Pickering Firm", synopsis: "We made a vision video for the Pickering Firm to showcase how they best provide for their clients and the people that work for them.", vimeoId: "1235908353" },
+      { title: "IMC Driver Welcome", category: "brand", role: "editor", featured: false, client: "IMC", synopsis: "We made a video for IMC to welcome new drivers into their organization.", vimeoId: "1235908360" },
       { title: "State of St. Jude 2024", category: "documentary", role: "cinematographer", featured: false, client: "St. Jude", synopsis: "The State of St. Jude gave employees an opportunity to learn about important progresses that have been made at St. Jude.", vimeoId: "1235908104" },
       { title: "Orion Build Strong #1", category: "commercial", role: "director-editor", featured: true, client: "Orion", synopsis: "We made an ad campaign for Orion to show during Grizzlies games to appeal to kids to start banking with them.", vimeoId: "1235908414" },
       { title: "Orion Build Strong #2", category: "commercial", role: "director-editor", featured: true, client: "Orion", synopsis: "We made an ad campaign for Orion to show during Grizzlies games to appeal to adults to start banking with them.", vimeoId: "1235908359" },
-      { title: "Advance Memphis Art for Jobs 2025 Promo", category: "social", role: "editor-animator", featured: false, client: "Advance Memphis", synopsis: "We made a social cut using the previous event's footage to highlight featured artists and highlight the upcoming event.", vimeoId: "1235908358" },
+      { title: "Advance Memphis Art for Jobs 2025 Promo", category: "social", role: "editor", featured: false, client: "Advance Memphis", synopsis: "We made a social cut using the previous event's footage to highlight featured artists and highlight the upcoming event.", vimeoId: "1235908358" },
       { title: "The Road to 10 Million Trailer", category: "documentary", role: "editor", featured: false, client: "Samaritan's Feet", synopsis: "Trailer for the Road to 10 Million documentary.", vimeoId: "1235912937" },
-      { title: "Memphis Boat Center Overview", category: "brand", role: "cinematographer-drone", featured: false, client: "Memphis Boat Center", synopsis: "We made a video for potential customers of Memphis Boat Center to know what to expect when they come to buy a boat.", vimeoId: "1235930970" },
-      { title: "Cadre Hawaii Ad", category: "brand", role: "cinematographer-drone", featured: false, client: "Cadre", synopsis: "We made an ad to appeal to potential clients of Cadre to visit Hawaii.", vimeoId: "1235931136" },
+      { title: "Memphis Boat Center Overview", category: "brand", role: "cinematographer", featured: false, client: "Memphis Boat Center", synopsis: "We made a video for potential customers of Memphis Boat Center to know what to expect when they come to buy a boat.", vimeoId: "1235930970" },
+      { title: "Cadre Hawaii Ad", category: "brand", role: "cinematographer", featured: true, client: "Cadre", synopsis: "We made an ad to appeal to potential clients of Cadre to visit Hawaii.", vimeoId: "1235931136" },
       { title: "Country Place Seder Dinner", category: "social", role: "editor-cinematographer", featured: false, client: "Country Place", synopsis: "We made a recap of the Country Place Seder Dinner where families could come and experience what it would've been like in Bible times.", vimeoId: "1235931008" },
-      { title: "CCL Hiring Video", category: "marketing", role: "editor-audio", featured: false, client: "CCL", synopsis: "We made a video for CCL to appeal to potential employees on why they should join CCL.", vimeoId: "1235931166" },
+      { title: "CCL Hiring Video", category: "marketing", role: "editor", featured: false, client: "CCL", synopsis: "We made a video for CCL to appeal to potential employees on why they should join CCL.", vimeoId: "1235931166" },
       { title: "Cadre Hamptons BTS", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "We made a behind the scenes video for Cadre and how they pull off an unforgettable weekend in the Hamptons.", vimeoId: "1235932802" },
-      { title: "Cadre Hamptons Ad", category: "brand", role: "cinematographer-drone", featured: false, client: "Cadre", synopsis: "We made an ad to appeal to potential clients of Cadre to visit the Hamptons.", vimeoId: "1235932741" },
+      { title: "Cadre Hamptons Ad", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "We made an ad to appeal to potential clients of Cadre to visit the Hamptons.", vimeoId: "1235932741" },
       { title: "Cadre Hawaii BTS", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "We made a behind the scenes video for Cadre and how they pull off an unforgettable weekend in Hawaii.", vimeoId: "1235934870" },
       { title: "Unite Memphis Complacent Video", category: "social", role: "editor-cinematographer", featured: false, client: "Unite Memphis", synopsis: "We made a social media ad to get the people of Memphis to stop being complacent and unite together in a race for everyone.", vimeoId: "1235932140" },
       { title: "Art for Jobs Sponsor Video", category: "social", role: "editor-cinematographer", featured: false, client: "Advance Memphis", synopsis: "We made a video to highlight the sponsor for that year's Art for Jobs event.", vimeoId: "1235931481" },
-      { title: "Unite Memphis 2025 Recap", category: "social", role: "editor-cinematographer-drone", featured: false, client: "Unite Memphis", synopsis: "A recap for the Unite Memphis 2025 event.", vimeoId: "1235955431" },
+      { title: "Unite Memphis 2025 Recap", category: "social", role: "editor-cinematographer", featured: true, client: "Unite Memphis", synopsis: "A recap for the Unite Memphis 2025 event.", vimeoId: "1235955431" },
     ];
 
     const ROLE_LABELS = {
@@ -291,10 +284,19 @@
     }
 
     function matchesRole(projectRole, filterRole) {
-      if (filterRole === "all") return true;
+      if (!filterRole) return true;
       if (projectRole === filterRole) return true;
-      const parts = ROLE_PARTS[projectRole];
-      return Array.isArray(parts) && parts.includes(filterRole);
+      // Atomic role filters also match combo roles that include them
+      if (filterRole === "editor" || filterRole === "cinematographer") {
+        const parts = ROLE_PARTS[projectRole];
+        return Array.isArray(parts) && parts.includes(filterRole);
+      }
+      return false;
+    }
+
+    function matchesAnyRole(projectRole, selectedRoles) {
+      if (!selectedRoles.length) return true;
+      return selectedRoles.some((filterRole) => matchesRole(projectRole, filterRole));
     }
 
     function videoSlot(id, title) {
@@ -369,14 +371,33 @@
       observeVimeoSlots(container);
     }
 
-    let currentCategory = "all";
-    let currentRole = "all";
+    const selectedCategories = new Set();
+    const selectedRoles = new Set();
+
+    function toggleFilterButton(btn, selectedSet, value) {
+      if (selectedSet.has(value)) {
+        selectedSet.delete(value);
+        btn.classList.remove("active");
+        btn.setAttribute("aria-pressed", "false");
+      } else {
+        selectedSet.add(value);
+        btn.classList.add("active");
+        btn.setAttribute("aria-pressed", "true");
+      }
+    }
 
     function renderArchive() {
       const container = document.getElementById("archive-grid");
       let filtered = projects.filter((p) => !p.featured);
-      if (currentCategory !== "all") filtered = filtered.filter((p) => p.category === currentCategory);
-      if (currentRole !== "all") filtered = filtered.filter((p) => matchesRole(p.role, currentRole));
+
+      if (selectedCategories.size) {
+        filtered = filtered.filter((p) => selectedCategories.has(p.category));
+      }
+      if (selectedRoles.size) {
+        filtered = filtered.filter((p) => matchesAnyRole(p.role, [...selectedRoles]));
+      }
+
+      filtered.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }));
 
       if (!filtered.length) {
         container.innerHTML = `
@@ -402,18 +423,14 @@
 
     document.querySelectorAll(".cat-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".cat-btn").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentCategory = btn.dataset.filter;
+        toggleFilterButton(btn, selectedCategories, btn.dataset.filter);
         renderArchive();
       });
     });
 
     document.querySelectorAll(".role-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".role-btn").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentRole = btn.dataset.role;
+        toggleFilterButton(btn, selectedRoles, btn.dataset.role);
         renderArchive();
       });
     });
