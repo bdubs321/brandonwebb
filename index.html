@@ -106,7 +106,7 @@
   <section id="work" class="py-32 px-6 border-t border-white/10">
     <div class="max-w-7xl mx-auto">
       <h2 class="font-display text-5xl md:text-6xl mb-6">HIGHLIGHTED WORK</h2>
-      <p class="text-white/50 mb-16 max-w-2xl">Featured projects with full context. 8–12 of the strongest pieces.</p>
+      <p class="text-white/50 mb-16 max-w-2xl">Selected projects with full context.</p>
       <div id="featured-work" class="space-y-32"></div>
     </div>
   </section>
@@ -240,6 +240,11 @@
       { title: "Unite Memphis Complacent Video", category: "social", role: "editor-cinematographer", featured: false, client: "Unite Memphis", synopsis: "We made a social media ad to get the people of Memphis to stop being complacent and unite together in a race for everyone.", vimeoId: "1235932140" },
       { title: "Art for Jobs Sponsor Video", category: "social", role: "editor-cinematographer", featured: false, client: "Advance Memphis", synopsis: "We made a video to highlight the sponsor for that year's Art for Jobs event.", vimeoId: "1235931481" },
       { title: "Unite Memphis 2025 Recap", category: "social", role: "editor-cinematographer", featured: true, client: "Unite Memphis", synopsis: "A recap for the Unite Memphis 2025 event.", vimeoId: "1235955431" },
+      { title: "International Paper: Courage to Care", category: "brand", role: "editor-cinematographer", featured: false, client: "International Paper", synopsis: "This film was made to encourage International Paper employees to take each other's safety seriously.", vimeoId: "1235995725" },
+      { title: "International Paper: Stop Work Authority", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "We made a film for International Paper that lets its employees know that they do have the authority to stop work if something feels unsafe.", vimeoId: "1235995950" },
+      { title: "International Paper: How a Box is Made", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "International Paper hired us to make a video to tell the world about how one of their award-winning boxes is made.", vimeoId: "1235995416" },
+      { title: "International Paper: Mill of the Future", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "We made a video for International Paper to show off the leading technology in their mills and plants.", vimeoId: "1235996117" },
+      { title: "International Paper: Start When Certain", category: "short-film", role: "grip", featured: true, client: "International Paper", synopsis: "International Paper had us create an award-winning short film to show its employees the consequences of not following procedures and being unsafe.", vimeoId: "1235995255" },
     ];
 
     const ROLE_LABELS = {
@@ -257,6 +262,7 @@
       "cinematographer": "Cinematographer",
       "director": "Director",
       "editor": "Editor",
+      "grip": "Grip",
     };
 
     const ROLE_PARTS = {
@@ -281,6 +287,11 @@
 
     function formatRole(role) {
       return ROLE_LABELS[role] || "";
+    }
+
+    function formatCategory(category) {
+      if (category === "short-film") return "Short Film";
+      return category || "";
     }
 
     function matchesRole(projectRole, filterRole) {
@@ -354,7 +365,7 @@
       container.innerHTML = featured.map((p, i) => {
         const flip = i % 2 === 1;
         const title = escapeHtml(p.title);
-        const meta = [p.client, p.category, formatRole(p.role)].filter(Boolean).map(escapeHtml).join(" · ");
+        const meta = [p.client, formatCategory(p.category), formatRole(p.role)].filter(Boolean).map(escapeHtml).join(" · ");
         return `
         <article class="grid md:grid-cols-2 gap-12 items-start">
           <div class="video-container border border-white/10 ${flip ? "md:order-2" : ""}">
@@ -414,7 +425,7 @@
             ${videoSlot(p.vimeoId, p.title)}
           </div>
           <h4 class="font-display text-xl mb-2">${escapeHtml(p.title)}</h4>
-          <p class="text-xs tracking-widest uppercase text-white/40 mb-3">${[p.category, formatRole(p.role)].filter(Boolean).map(escapeHtml).join(" · ")}</p>
+          <p class="text-xs tracking-widest uppercase text-white/40 mb-3">${[formatCategory(p.category), formatRole(p.role)].filter(Boolean).map(escapeHtml).join(" · ")}</p>
           <p class="text-sm text-white/60">${escapeHtml(p.synopsis)}</p>
         </div>
       `).join("");
