@@ -16,8 +16,29 @@
     html { scroll-padding-top: 5.5rem; }
     body { font-family: 'Inter', sans-serif; overflow-anchor: none; }
     .font-display { font-family: 'Boldonse', sans-serif; letter-spacing: -0.02em; }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: rgba(255,255,255,0.05); }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .video-container {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+    }
+    .video-container iframe,
+    .video-container__slot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .archive-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .archive-card .archive-card__meta {
+      flex: 1 1 auto;
+    }
     .filter-btn.active { background: white; color: black; }
     .filter-btn:focus-visible,
     #menu-btn:focus-visible,
@@ -66,6 +87,7 @@
         <a href="#archive" class="hover:text-white/60 transition">Archive</a>
         <a href="#skills" class="hover:text-white/60 transition">Skills</a>
         <a href="#contact" class="hover:text-white/60 transition">Contact</a>
+        <a href="/Brandon_Webb_Resume.pdf" class="hover:text-white/60 transition">Resume</a>
       </div>
       <button id="menu-btn" type="button" class="md:hidden p-1" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -77,6 +99,7 @@
       <a href="#archive" class="block py-1">Archive</a>
       <a href="#skills" class="block py-1">Skills</a>
       <a href="#contact" class="block py-1">Contact</a>
+      <a href="/Brandon_Webb_Resume.pdf" class="block py-1">Resume</a>
     </div>
   </nav>
 
@@ -107,6 +130,14 @@
     </div>
   </section>
 
+  <!-- How I Work -->
+  <section id="how-i-work" class="py-32 px-6 border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-display text-5xl md:text-6xl mb-12">HOW I WORK</h2>
+      <p class="text-lg md:text-xl leading-relaxed text-white/80 max-w-3xl">I turn concepts into clear production plans, then manage the timeline from shoot through delivery. On set I handle camera, audio, and lighting while keeping multiple projects moving. In post I organize assets and edit so the final piece supports the client’s goals.</p>
+    </div>
+  </section>
+
   <!-- Work credit -->
   <section class="py-16 px-6 border-t border-white/10">
     <div class="max-w-7xl mx-auto text-center">
@@ -118,7 +149,7 @@
   <section id="work" class="py-32 px-6 border-t border-white/10">
     <div class="max-w-7xl mx-auto">
       <h2 class="font-display text-5xl md:text-6xl mb-6">HIGHLIGHTED WORK</h2>
-      <p class="text-white/50 mb-16 max-w-2xl">Selected projects with full context.</p>
+      <p class="text-xs tracking-widest uppercase text-white/50 mb-16 max-w-3xl">Eight projects that best represent my range as a director, editor, and cinematographer.</p>
       <div id="featured-work" class="space-y-32"></div>
     </div>
   </section>
@@ -143,8 +174,11 @@
       <div class="mb-12">
         <p class="text-xs tracking-widest uppercase text-white/40 mb-3">Role</p>
         <div class="flex flex-wrap gap-3" id="role-filters">
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="director" aria-pressed="false">Director</button>
           <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="editor" aria-pressed="false">Editor</button>
           <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="cinematographer" aria-pressed="false">Cinematographer</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="director-editor" aria-pressed="false">Director + Editor</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="editor-cinematographer" aria-pressed="false">Editor + Cinematographer</button>
         </div>
       </div>
 
@@ -202,6 +236,7 @@
       <div class="space-y-6">
         <p><a href="mailto:bwebb321@gmail.com" class="text-2xl hover:text-white/60 transition">bwebb321@gmail.com</a></p>
         <p><a href="tel:+19018964115" class="text-2xl hover:text-white/60 transition">(901) 896-4115</a></p>
+        <p><a href="/Brandon_Webb_Resume.pdf" class="text-sm tracking-widest uppercase hover:text-white/60 transition">Resume</a></p>
         <p class="text-xs tracking-widest uppercase text-white/40">Memphis, Tennessee</p>
       </div>
       <div class="mt-16">
@@ -216,61 +251,53 @@
 
   <script>
     // Project data — set featured: true for Highlighted Work pieces.
-    // role: "director" | "editor" | "cinematographer" | "drone-cinematographer" | "audio" | "animator" | "director-editor" | "editor-cinematographer" | "editor-cinematographer-drone" | "editor-audio" | "editor-animator" | "cinematographer-drone" | "cinematographer-drone-audio" | "all-roles"
+    // role: "director" | "editor" | "cinematographer" | "director-editor" | "editor-cinematographer" | "cinematographer-drone" | "grip"
     const projects = [
       { title: "Memphis School of Excellence 15 Year Anniversary Video", category: "marketing", role: "cinematographer", featured: false, client: "Memphis School of Excellence", synopsis: "Memphis School of Excellence wanted a video to celebrate their 15 years of making a difference in the lives of students.", vimeoId: "1235525498" },
-      { title: "Creation Studios Reel", category: "", role: "all-roles", featured: true, client: "Creation Studios", synopsis: "This is Creation Studios' most updated cinematography reel showcasing beautiful imagery.", vimeoId: "1235518884" },
-      { title: "UNBOWED Pitch Video", category: "documentary", role: "editor-cinematographer", featured: true, client: "PURE Academy", synopsis: "This video was made as a pitch for a longer, multi-episodic docuseries about an inner city boarding school in the heart of Memphis, TN. I was the editor and cinematographer.", vimeoId: "1235528644" },
+      { title: "Creation Studios Reel", category: "", role: "editor-cinematographer", featured: true, client: "Creation Studios", synopsis: "Creation Studios' most updated cinematography reel, showcasing beautiful imagery.", vimeoId: "1235518884" },
+      { title: "UNBOWED Pitch Video", category: "documentary", role: "editor-cinematographer", featured: true, client: "PURE Academy", synopsis: "This video was made as a pitch for a longer, multi-episodic docuseries about an inner-city boarding school in the heart of Memphis, TN. I was the editor and cinematographer.", vimeoId: "1235528644" },
       { title: "The Road to 10 Million", category: "documentary", role: "cinematographer-drone", featured: true, client: "Samaritan's Feet", synopsis: "This project for Samaritan's Feet involved multi-location shoots including South Africa. This story encompassed everything Samaritan's Feet has been up until now and everything it plans to do moving forward. It celebrated their giving away of their 10 millionth pair of shoes!", vimeoId: "1235912938" },
-      { title: "We Fight Monsters Vision", category: "brand", role: "all-roles", featured: true, client: "We Fight Monsters", synopsis: "This video was made to effectively communicate the mission of We Fight Monsters and to help them raise support.", vimeoId: "1235525332" },
+      { title: "We Fight Monsters Vision", category: "brand", role: "editor-cinematographer", featured: true, client: "We Fight Monsters", synopsis: "This video was made to effectively communicate the mission of We Fight Monsters and to help them raise support.", vimeoId: "1235525332" },
       { title: "Cypress Creek: Steel", category: "documentary", role: "cinematographer-drone", featured: true, client: "Cypress Creek", synopsis: "Cypress Creek wanted to showcase how the steel they're using for their solar project in eastern Arkansas came from steel manufacturers in the surrounding area.", vimeoId: "1235525331" },
       { title: "Gun Violence Reduction Initiative", category: "documentary", role: "cinematographer", featured: true, client: "Memphis Police Department", synopsis: "Documentary work for Memphis Police Department to effectively communicate their efforts in getting ahead of gun violence in the city.", vimeoId: "1235551764" },
       { title: "Memphis Tourism Soul Trip #1", category: "social", role: "cinematographer", featured: false, client: "Memphis Tourism", synopsis: "Social media campaign for Memphis Tourism and its appeal to Memphis as a city to get out and have fun in.", vimeoId: "1235528535" },
-      { title: "Pickering Case Study #1", category: "documentary", role: "cinematographer", featured: false, client: "Pickering Firm", synopsis: "This is the first in a series of case studies for the Pickering Firm. This one focuses on Pickering's focus and care of the natural environment of where they're working.", vimeoId: "1235527975" },
+      { title: "Pickering Case Study #1", category: "documentary", role: "cinematographer", featured: false, client: "Pickering Firm", synopsis: "The first in a series of case studies for the Pickering Firm. This one focuses on Pickering's care for the natural environment where they're working.", vimeoId: "1235527975" },
       { title: "Memphis Tourism Soul Trip #2", category: "social", role: "editor", featured: false, client: "Memphis Tourism", synopsis: "Social media campaign for Memphis Tourism and its appeal to Memphis as a city to get out and have fun in.", vimeoId: "1235527876" },
       { title: "Memphis Tourism Soul Trip #3", category: "social", role: "editor", featured: false, client: "Memphis Tourism", synopsis: "Social media campaign for Memphis Tourism and its appeal to Memphis as a city to get out and have fun in.", vimeoId: "1235527789" },
       { title: "Memphis Tourism Soul Trip #4", category: "social", role: "editor-cinematographer", featured: false, client: "Memphis Tourism", synopsis: "Social media campaign for Memphis Tourism and its appeal to Memphis as a city to get out and have fun in.", vimeoId: "1235527667" },
       { title: "Memphis Tourism Soul Trip #5", category: "social", role: "editor", featured: false, client: "Memphis Tourism", synopsis: "Social media campaign for Memphis Tourism and its appeal to Memphis as a city to get out and have fun in.", vimeoId: "1235525334" },
       { title: "Memphis Tourism Soul Trip #6", category: "social", role: "editor", featured: false, client: "Memphis Tourism", synopsis: "Social media campaign for Memphis Tourism and its appeal to Memphis as a city to get out and have fun in.", vimeoId: "1235525382" },
-      { title: "State of St. Jude 2023", category: "documentary", role: "cinematographer", featured: false, client: "St. Jude", synopsis: "The State of St. Jude gave employees an opportunity to learn about important progresses that have been made at St. Jude.", vimeoId: "1235908768" },
+      { title: "State of St. Jude 2023", category: "documentary", role: "cinematographer", featured: false, client: "St. Jude", synopsis: "The State of St. Jude gave employees an opportunity to learn about important progress that has been made at St. Jude.", vimeoId: "1235908768" },
       { title: "Memphis Boat Center Vision", category: "documentary", role: "cinematographer", featured: false, client: "Memphis Boat Center", synopsis: "This story focuses on the history of Memphis Boat Center and all the joy that comes with owning a boat.", vimeoId: "1235908513" },
-      { title: "Executive Speakers Bureau Vision", category: "brand", role: "cinematographer", featured: false, client: "Executive Speakers Bureau", synopsis: "With this project, multi-location shoots led to us telling the story of Executive Speakers Bureau and how it represents Speakers so they can effectively communicate their messages to the world.", vimeoId: "1235908515" },
-      { title: "Pickering Vision Video", category: "brand", role: "cinematographer", featured: false, client: "Pickering Firm", synopsis: "We made a vision video for the Pickering Firm to showcase how they best provide for their clients and the people that work for them.", vimeoId: "1235908353" },
-      { title: "IMC Driver Welcome", category: "brand", role: "editor", featured: false, client: "IMC", synopsis: "We made a video for IMC to welcome new drivers into their organization.", vimeoId: "1235908360" },
-      { title: "State of St. Jude 2024", category: "documentary", role: "cinematographer", featured: false, client: "St. Jude", synopsis: "The State of St. Jude gave employees an opportunity to learn about important progresses that have been made at St. Jude.", vimeoId: "1235908104" },
-      { title: "Orion Build Strong #1", category: "commercial", role: "director-editor", featured: true, client: "Orion", synopsis: "We made an ad campaign for Orion to show during Grizzlies games to appeal to kids to start banking with them.", vimeoId: "1235908414" },
-      { title: "Orion Build Strong #2", category: "commercial", role: "director-editor", featured: true, client: "Orion", synopsis: "We made an ad campaign for Orion to show during Grizzlies games to appeal to adults to start banking with them.", vimeoId: "1235908359" },
-      { title: "Advance Memphis Art for Jobs 2025 Promo", category: "social", role: "editor", featured: false, client: "Advance Memphis", synopsis: "We made a social cut using the previous event's footage to highlight featured artists and highlight the upcoming event.", vimeoId: "1235908358" },
+      { title: "Executive Speakers Bureau Vision", category: "brand", role: "cinematographer", featured: false, client: "Executive Speakers Bureau", synopsis: "With this project, multi-location shoots led to us telling the story of Executive Speakers Bureau and how it represents speakers so they can effectively communicate their messages to the world.", vimeoId: "1235908515" },
+      { title: "Pickering Vision Video", category: "brand", role: "cinematographer", featured: false, client: "Pickering Firm", synopsis: "A vision video for the Pickering Firm to showcase how they best provide for their clients and the people that work for them.", vimeoId: "1235908353" },
+      { title: "IMC Driver Welcome", category: "brand", role: "editor", featured: false, client: "IMC", synopsis: "A video for IMC to welcome new drivers into their organization.", vimeoId: "1235908360" },
+      { title: "State of St. Jude 2024", category: "documentary", role: "cinematographer", featured: false, client: "St. Jude", synopsis: "The State of St. Jude gave employees an opportunity to learn about important progress that has been made at St. Jude.", vimeoId: "1235908104" },
+      { title: "Orion Build Strong #1", category: "commercial", role: "director-editor", featured: true, client: "Orion", synopsis: "An ad campaign for Orion to show during Grizzlies games to appeal to kids to start banking with them.", vimeoId: "1235908414" },
+      { title: "Orion Build Strong #2", category: "commercial", role: "director-editor", featured: false, client: "Orion", synopsis: "An ad campaign for Orion to show during Grizzlies games to appeal to adults to start banking with them.", vimeoId: "1235908359" },
+      { title: "Advance Memphis Art for Jobs 2025 Promo", category: "social", role: "editor", featured: false, client: "Advance Memphis", synopsis: "A social cut using the previous event's footage to highlight featured artists and the upcoming event.", vimeoId: "1235908358" },
       { title: "The Road to 10 Million Trailer", category: "documentary", role: "editor", featured: false, client: "Samaritan's Feet", synopsis: "Trailer for the Road to 10 Million documentary.", vimeoId: "1235912937" },
-      { title: "Memphis Boat Center Overview", category: "brand", role: "cinematographer", featured: false, client: "Memphis Boat Center", synopsis: "We made a video for potential customers of Memphis Boat Center to know what to expect when they come to buy a boat.", vimeoId: "1235930970" },
-      { title: "Cadre Hawaii Ad", category: "brand", role: "cinematographer", featured: true, client: "Cadre", synopsis: "We made an ad to appeal to potential clients of Cadre to visit Hawaii.", vimeoId: "1235931136" },
-      { title: "Country Place Seder Dinner", category: "social", role: "editor-cinematographer", featured: false, client: "Country Place", synopsis: "We made a recap of the Country Place Seder Dinner where families could come and experience what it would've been like in Bible times.", vimeoId: "1235931008" },
-      { title: "CCL Hiring Video", category: "marketing", role: "editor", featured: false, client: "CCL", synopsis: "We made a video for CCL to appeal to potential employees on why they should join CCL.", vimeoId: "1235931166" },
-      { title: "Cadre Hamptons BTS", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "We made a behind the scenes video for Cadre and how they pull off an unforgettable weekend in the Hamptons.", vimeoId: "1235932802" },
-      { title: "Cadre Hamptons Ad", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "We made an ad to appeal to potential clients of Cadre to visit the Hamptons.", vimeoId: "1235932741" },
-      { title: "Cadre Hawaii BTS", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "We made a behind the scenes video for Cadre and how they pull off an unforgettable weekend in Hawaii.", vimeoId: "1235934870" },
-      { title: "Unite Memphis Complacent Video", category: "social", role: "editor-cinematographer", featured: false, client: "Unite Memphis", synopsis: "We made a social media ad to get the people of Memphis to stop being complacent and unite together in a race for everyone.", vimeoId: "1235932140" },
-      { title: "Art for Jobs Sponsor Video", category: "social", role: "editor-cinematographer", featured: false, client: "Advance Memphis", synopsis: "We made a video to highlight the sponsor for that year's Art for Jobs event.", vimeoId: "1235931481" },
-      { title: "Unite Memphis 2025 Recap", category: "social", role: "editor-cinematographer", featured: true, client: "Unite Memphis", synopsis: "A recap for the Unite Memphis 2025 event.", vimeoId: "1235955431" },
+      { title: "Memphis Boat Center Overview", category: "brand", role: "cinematographer", featured: false, client: "Memphis Boat Center", synopsis: "A video for potential customers of Memphis Boat Center to know what to expect when they come to buy a boat.", vimeoId: "1235930970" },
+      { title: "Cadre Hawaii Ad", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "An ad to appeal to potential clients of Cadre to visit Hawaii.", vimeoId: "1235931136" },
+      { title: "Country Place Seder Dinner", category: "social", role: "editor-cinematographer", featured: false, client: "Country Place", synopsis: "A recap of the Country Place Seder Dinner where families could come and experience what it would've been like in Bible times.", vimeoId: "1235931008" },
+      { title: "CCL Hiring Video", category: "marketing", role: "editor", featured: false, client: "CCL", synopsis: "A video for CCL to appeal to potential employees on why they should join CCL.", vimeoId: "1235931166" },
+      { title: "Cadre Hamptons BTS", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "A behind-the-scenes video for Cadre and how they pull off an unforgettable weekend in the Hamptons.", vimeoId: "1235932802" },
+      { title: "Cadre Hamptons Ad", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "An ad to appeal to potential clients of Cadre to visit the Hamptons.", vimeoId: "1235932741" },
+      { title: "Cadre Hawaii BTS", category: "brand", role: "cinematographer", featured: false, client: "Cadre", synopsis: "A behind-the-scenes video for Cadre and how they pull off an unforgettable weekend in Hawaii.", vimeoId: "1235934870" },
+      { title: "Unite Memphis Complacent Video", category: "social", role: "editor-cinematographer", featured: false, client: "Unite Memphis", synopsis: "A social media ad to get the people of Memphis to stop being complacent and unite together in a race for everyone.", vimeoId: "1235932140" },
+      { title: "Art for Jobs Sponsor Video", category: "social", role: "editor-cinematographer", featured: false, client: "Advance Memphis", synopsis: "A video to highlight the sponsor for that year's Art for Jobs event.", vimeoId: "1235931481" },
+      { title: "Unite Memphis 2025 Recap", category: "social", role: "editor-cinematographer", featured: false, client: "Unite Memphis", synopsis: "A recap for the Unite Memphis 2025 event.", vimeoId: "1235955431" },
       { title: "International Paper: Courage to Care", category: "brand", role: "editor-cinematographer", featured: false, client: "International Paper", synopsis: "This film was made to encourage International Paper employees to take each other's safety seriously.", vimeoId: "1235995725" },
-      { title: "International Paper: Stop Work Authority", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "We made a film for International Paper that lets its employees know that they do have the authority to stop work if something feels unsafe.", vimeoId: "1235995950" },
+      { title: "International Paper: Stop Work Authority", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "A film for International Paper that lets its employees know that they do have the authority to stop work if something feels unsafe.", vimeoId: "1235995950" },
       { title: "International Paper: How a Box is Made", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "International Paper hired us to make a video to tell the world about how one of their award-winning boxes is made.", vimeoId: "1235995416" },
-      { title: "International Paper: Mill of the Future", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "We made a video for International Paper to show off the leading technology in their mills and plants.", vimeoId: "1235996117" },
+      { title: "International Paper: Mill of the Future", category: "brand", role: "cinematographer", featured: false, client: "International Paper", synopsis: "A video for International Paper to show off the leading technology in their mills and plants.", vimeoId: "1235996117" },
       { title: "International Paper: Start When Certain", category: "short-film", role: "grip", featured: true, client: "International Paper", synopsis: "International Paper had us create an award-winning short film to show its employees the consequences of not following procedures and being unsafe.", vimeoId: "1235995255" },
     ];
 
     const ROLE_LABELS = {
-      "all-roles": "All Roles",
-      "cinematographer-drone-audio": "Cinematographer + Drone Cinematographer + Audio",
       "director-editor": "Director + Editor",
       "editor-cinematographer": "Editor + Cinematographer",
-      "editor-cinematographer-drone": "Editor + Cinematographer + Drone Cinematographer",
-      "editor-audio": "Editor + Audio",
-      "editor-animator": "Editor + Animator",
       "cinematographer-drone": "Cinematographer + Drone Cinematographer",
-      "drone-cinematographer": "Drone Cinematographer",
-      "audio": "Audio",
-      "animator": "Animator",
       "cinematographer": "Cinematographer",
       "director": "Director",
       "editor": "Editor",
@@ -278,13 +305,8 @@
     };
 
     const ROLE_PARTS = {
-      "all-roles": ["director", "editor", "cinematographer", "drone-cinematographer", "audio", "animator"],
-      "cinematographer-drone-audio": ["cinematographer", "drone-cinematographer", "audio"],
       "director-editor": ["director", "editor"],
       "editor-cinematographer": ["editor", "cinematographer"],
-      "editor-cinematographer-drone": ["editor", "cinematographer", "drone-cinematographer"],
-      "editor-audio": ["editor", "audio"],
-      "editor-animator": ["editor", "animator"],
       "cinematographer-drone": ["cinematographer", "drone-cinematographer"],
     };
 
@@ -310,9 +332,9 @@
       if (!filterRole) return true;
       if (projectRole === filterRole) return true;
       // Atomic role filters also match combo roles that include them
-      if (filterRole === "editor" || filterRole === "cinematographer") {
-        const parts = ROLE_PARTS[projectRole];
-        return Array.isArray(parts) && parts.includes(filterRole);
+      if (filterRole === "director" || filterRole === "editor" || filterRole === "cinematographer") {
+        const parts = ROLE_PARTS[projectRole] || [projectRole];
+        return parts.includes(filterRole);
       }
       return false;
     }
@@ -397,6 +419,50 @@
     const selectedCategories = new Set();
     const selectedRoles = new Set();
 
+    // Strength order for Archive (featured pieces still only appear in Highlighted Work)
+    const ARCHIVE_ORDER = [
+      "Creation Studios Reel",
+      "UNBOWED Pitch Video",
+      "The Road to 10 Million",
+      "We Fight Monsters Vision",
+      "Cypress Creek: Steel",
+      "Gun Violence Reduction Initiative",
+      "Orion Build Strong #1",
+      "Orion Build Strong #2",
+      "International Paper: Start When Certain",
+      "International Paper: Courage to Care",
+      "International Paper: How a Box is Made",
+      "International Paper: Mill of the Future",
+      "International Paper: Stop Work Authority",
+      "Cadre Hawaii Ad",
+      "Cadre Hamptons Ad",
+      "Cadre Hawaii BTS",
+      "Cadre Hamptons BTS",
+      "Executive Speakers Bureau Vision",
+      "Pickering Vision Video",
+      "Pickering Case Study #1",
+      "State of St. Jude 2023",
+      "State of St. Jude 2024",
+      "Memphis Boat Center Vision",
+      "Memphis Boat Center Overview",
+      "Memphis School of Excellence 15 Year Anniversary Video",
+      "Unite Memphis 2025 Recap",
+      "Unite Memphis Complacent Video",
+      "Advance Memphis Art for Jobs 2025 Promo",
+      "Art for Jobs Sponsor Video",
+      "Country Place Seder Dinner",
+      "CCL Hiring Video",
+      "IMC Driver Welcome",
+      "Memphis Tourism Soul Trip #1",
+      "Memphis Tourism Soul Trip #2",
+      "Memphis Tourism Soul Trip #3",
+      "Memphis Tourism Soul Trip #4",
+      "Memphis Tourism Soul Trip #5",
+      "Memphis Tourism Soul Trip #6",
+      "The Road to 10 Million Trailer",
+    ];
+    const archiveOrderIndex = new Map(ARCHIVE_ORDER.map((title, i) => [title.toLowerCase(), i]));
+
     function toggleFilterButton(btn, selectedSet, value) {
       if (selectedSet.has(value)) {
         selectedSet.delete(value);
@@ -420,7 +486,12 @@
         filtered = filtered.filter((p) => matchesAnyRole(p.role, [...selectedRoles]));
       }
 
-      filtered.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }));
+      filtered.sort((a, b) => {
+        const ai = archiveOrderIndex.has(a.title.toLowerCase()) ? archiveOrderIndex.get(a.title.toLowerCase()) : Number.MAX_SAFE_INTEGER;
+        const bi = archiveOrderIndex.has(b.title.toLowerCase()) ? archiveOrderIndex.get(b.title.toLowerCase()) : Number.MAX_SAFE_INTEGER;
+        if (ai !== bi) return ai - bi;
+        return a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
+      });
 
       if (!filtered.length) {
         container.innerHTML = `
@@ -436,9 +507,11 @@
           <div class="video-container mb-4">
             ${videoSlot(p.vimeoId, p.title)}
           </div>
-          <h4 class="font-display text-xl mb-2">${escapeHtml(p.title)}</h4>
-          <p class="text-xs tracking-widest uppercase text-white/40 mb-3">${[formatCategory(p.category), formatRole(p.role)].filter(Boolean).map(escapeHtml).join(" · ")}</p>
-          <p class="text-sm text-white/60">${escapeHtml(p.synopsis)}</p>
+          <div class="archive-card__meta">
+            <h4 class="font-display text-xl mb-2">${escapeHtml(p.title)}</h4>
+            <p class="text-xs tracking-widest uppercase text-white/40 mb-3">${[formatCategory(p.category), formatRole(p.role)].filter(Boolean).map(escapeHtml).join(" · ")}</p>
+            <p class="text-sm text-white/60">${escapeHtml(p.synopsis)}</p>
+          </div>
         </div>
       `).join("");
       observeVimeoSlots(container);
