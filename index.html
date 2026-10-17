@@ -45,7 +45,23 @@
     .archive-card .archive-card__meta {
       flex: 1 1 auto;
     }
-    .filter-btn.active { background: white; color: black; }
+    .filter-btn {
+      background: transparent;
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .filter-btn.active {
+      background: white;
+      color: black;
+    }
+    /* Hover only on real pointer devices — sticky :hover on iOS made filters look stuck on */
+    @media (hover: hover) and (pointer: fine) {
+      .filter-btn:hover:not(.active) {
+        background: white;
+        color: black;
+      }
+    }
     .filter-btn:focus-visible,
     #menu-btn:focus-visible,
     a:focus-visible {
@@ -168,22 +184,22 @@
       <div class="mb-4">
         <p class="text-xs tracking-widest uppercase text-white/40 mb-3">Category</p>
         <div class="flex flex-wrap gap-3" id="category-filters">
-          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="commercial" aria-pressed="false">Commercial</button>
-          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="brand" aria-pressed="false">Brand</button>
-          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="documentary" aria-pressed="false">Documentary</button>
-          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="marketing" aria-pressed="false">Marketing</button>
-          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-filter="social" aria-pressed="false">Social</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-filter="commercial" aria-pressed="false">Commercial</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-filter="brand" aria-pressed="false">Brand</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-filter="documentary" aria-pressed="false">Documentary</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-filter="marketing" aria-pressed="false">Marketing</button>
+          <button type="button" class="filter-btn cat-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-filter="social" aria-pressed="false">Social</button>
         </div>
       </div>
 
       <div class="mb-12">
         <p class="text-xs tracking-widest uppercase text-white/40 mb-3">Role</p>
         <div class="flex flex-wrap gap-3" id="role-filters">
-          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="director" aria-pressed="false">Director</button>
-          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="editor" aria-pressed="false">Editor</button>
-          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="cinematographer" aria-pressed="false">Cinematographer</button>
-          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="director-editor" aria-pressed="false">Director + Editor</button>
-          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 hover:bg-white hover:text-black transition" data-role="editor-cinematographer" aria-pressed="false">Editor + Cinematographer</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-role="director" aria-pressed="false">Director</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-role="editor" aria-pressed="false">Editor</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-role="cinematographer" aria-pressed="false">Cinematographer</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-role="director-editor" aria-pressed="false">Director + Editor</button>
+          <button type="button" class="filter-btn role-btn px-6 py-2 text-xs tracking-widest uppercase border border-white/30 transition" data-role="editor-cinematographer" aria-pressed="false">Editor + Cinematographer</button>
         </div>
       </div>
 
@@ -538,6 +554,7 @@
       btn.addEventListener("click", () => {
         toggleFilterButton(btn, selectedCategories, btn.dataset.filter);
         renderArchive();
+        btn.blur();
       });
     });
 
@@ -545,6 +562,7 @@
       btn.addEventListener("click", () => {
         toggleFilterButton(btn, selectedRoles, btn.dataset.role);
         renderArchive();
+        btn.blur();
       });
     });
 
