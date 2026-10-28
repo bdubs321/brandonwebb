@@ -126,39 +126,48 @@
       letter-spacing: -1pt;
       pointer-events: none;
     }
-    .main { display: flex; flex-direction: column; min-height: 0; }
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 0;
+      height: 100%;
+      padding: 8pt 0 16pt;
+      gap: 0;
+    }
     .sec {
       border-bottom: 0.75pt solid rgba(245, 240, 230, 0.45);
-      padding: 10pt 20pt;
-      flex: 1;
+      padding: 14pt 20pt 13pt;
+      flex: 0 0 auto;
     }
-    .sec:last-child { border-bottom: 0; }
+    .sec:last-child { border-bottom: 0; padding-bottom: 0; }
     h2 {
       font-size: 13pt;
       font-weight: 700;
-      margin: 0 0 5pt;
+      margin: 0 0 7pt;
       letter-spacing: -0.2pt;
     }
     p { margin: 0; }
-    .r { font-size: 9pt; line-height: 11.6pt; font-weight: 400; }
-    .job { font-weight: 700; font-size: 9.6pt; line-height: 12pt; margin: 7pt 0 3pt; }
-    .job:first-of-type { margin-top: 0; }
+    .r { font-size: 10.5pt; line-height: 16.2pt; font-weight: 400; }
+    .role + .role { margin-top: 18pt; }
+    .job { font-weight: 700; font-size: 10.5pt; line-height: 14pt; margin: 0 0 5pt; }
     ul { list-style: none; margin: 0; padding: 0; }
-    li { position: relative; padding-left: 9pt; margin-bottom: 1.6pt; }
+    li { position: relative; padding-left: 10pt; margin: 0 0 8pt; }
+    li:last-child { margin-bottom: 0; }
     li:before { content: "•"; position: absolute; left: 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 3.5pt; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5pt; }
     .chip {
       border: 0.9pt solid #f5f0e6;
       border-radius: 20pt;
-      padding: 2pt 7pt;
-      font-size: 8.4pt;
-      line-height: 10.5pt;
+      padding: 3pt 8pt;
+      font-size: 9pt;
+      line-height: 12pt;
       font-weight: 600;
       white-space: nowrap;
     }
     .chip.f { background: #f5f0e6; color: #1a1a1a; }
-    .degree { margin-bottom: 3pt; }
-    .degree + p { margin-bottom: 3pt; }
+    .edu p { margin: 0 0 5pt; }
+    .edu p:last-child { margin-bottom: 0; }
 
     @media screen {
       .topbar {
@@ -252,14 +261,18 @@
         line-height: 0.75;
         letter-spacing: -0.04em;
       }
+      .main { height: auto; justify-content: flex-start; padding: 0; }
       .sec {
-        padding: 18px 16px 16px;
+        padding: 18px 16px;
         border-bottom-width: 1px;
       }
+      .sec:last-child { padding-bottom: 28px; }
       h2 { font-size: 18px; margin-bottom: 8px; }
       .r, .main.r { font-size: 15px; line-height: 1.45; }
-      .job { font-size: 15.5px; line-height: 1.35; margin: 14px 0 6px; }
-      li { padding-left: 14px; margin-bottom: 6px; }
+      .role + .role { margin-top: 16px; }
+      .job { font-size: 15.5px; line-height: 1.35; margin: 0 0 6px; }
+      li { padding-left: 14px; margin: 0 0 6px; }
+      .edu p { margin: 0 0 6px; }
       .chips { gap: 6px; }
       .chip {
         font-size: 13px;
@@ -307,30 +320,28 @@
       <div class="main r">
         <section class="sec">
           <h2>Professional Summary</h2>
-          <p>Cinematographer, editor, and producer with 8+ years creating video for brands, nonprofits, and education clients in the Memphis area. Hands-on experience includes camera, audio, and lighting, plus producing, shooting, and editing long-form courses and podcast video. Manages production timelines, coordinates stakeholders, organizes media assets for handoff, and meets deadlines across concurrent projects. BBA in Marketing Management from the University of Memphis. Open to shooting, editing, and producing roles.</p>
+          <p>Cinematographer, editor, and producer with 8+ years creating video for brands, nonprofits, and education clients in the Memphis area. Hands-on with camera, audio, and lighting. Manages production timelines, coordinates stakeholders, organizes media assets for handoff, and meets deadlines across concurrent projects. BBA in Marketing Management from the University of Memphis. Open to shooting, editing, and producing roles.</p>
         </section>
         <section class="sec">
           <h2>Professional Experience</h2>
-          <p class="job">Director of Video Production | Creation Studios, Memphis, TN | November 2025 – Present</p>
-          <ul>
-            <li>Partner with creative teams to turn concepts and storyboards into actionable production plans.</li>
-            <li>Manage project timelines to align shoots and delivery with agreed concepts, coordinating across stages.</li>
-            <li>Coordinate production elements, including filming and equipment management when needed.</li>
-            <li>Bridge on-set realities with post-production needs to support smooth handoffs.</li>
-          </ul>
-          <p class="job">Content Producer | Shoot the Veil, Memphis, TN | August 2022 – May 2025</p>
-          <ul>
-            <li>Produced and delivered long-form courses and podcast video for photographers building their businesses.</li>
-            <li>Shot and edited program content while helping establish production foundations for a startup.</li>
-            <li>Balanced producing responsibilities with hands-on capture and editing as needed.</li>
-          </ul>
-          <p class="job">Editor / Cinematographer | Creation Studios, Memphis, TN | May 2018 – November 2025</p>
-          <ul>
-            <li>Operated camera, audio, and lighting setups; resolved technical issues to keep productions on track.</li>
-            <li>Managed multiple concurrent projects at different stages while meeting deadlines.</li>
-            <li>Organized and archived media assets for efficient editorial handoff.</li>
-            <li>Built foundational production skills applied across client work for brands, nonprofits, and education.</li>
-          </ul>
+          <div class="role">
+            <p class="job">Director of Video Production | Creation Studios, Memphis, TN | Nov 2025 – Present</p>
+            <ul>
+              <li>Partner with creative teams to turn concepts and storyboards into actionable plans.</li>
+              <li>Manage timelines to align shoots and delivery with agreed concepts across stages.</li>
+              <li>Coordinate filming, equipment, and other production elements when needed.</li>
+              <li>Bridge on-set realities with post-production needs for smooth handoffs.</li>
+            </ul>
+          </div>
+          <div class="role">
+            <p class="job">Editor / Cinematographer | Creation Studios, Memphis, TN | May 2018 – Nov 2025</p>
+            <ul>
+              <li>Operated camera, audio, and lighting; resolved issues to keep productions on track.</li>
+              <li>Managed multiple concurrent projects at different stages while meeting deadlines.</li>
+              <li>Organized and archived media assets for an efficient editorial handoff.</li>
+              <li>Built foundational skills across client work for brands, nonprofits, and education.</li>
+            </ul>
+          </div>
         </section>
         <section class="sec">
           <h2>Core Skills</h2>
@@ -348,9 +359,10 @@
             <span class="chip">FAA Part 107 Remote Pilot</span>
           </div>
         </section>
-        <section class="sec">
+        <section class="sec edu">
           <h2>Education &amp; Certifications</h2>
-          <p class="degree"><b>BBA, Marketing Management</b> | University of Memphis, Fogelman College of Business | May 2019</p>
+          <p><b>BBA, Marketing Management</b> | May 2019</p>
+          <p>University of Memphis, Fogelman College of Business</p>
           <p>MILE Program participant, 2019</p>
           <p>FAA Part 107 Remote Pilot Certificate</p>
         </section>
