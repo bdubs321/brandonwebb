@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brandon Webb | Video Producer & Creative</title>
   <meta name="description" content="Portfolio of Brandon Webb, video producer and creative professional specializing in story-driven video for brands, communications, and marketing.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#1a1a1a">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,11 +13,11 @@
   <link rel="preconnect" href="https://i.vimeocdn.com">
   <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    html { scroll-padding-top: 5.5rem; background: #000; }
+    html { scroll-padding-top: 5.5rem; background: #1a1a1a; }
     body {
       font-family: 'Inter', sans-serif;
       overflow-anchor: none;
-      background: #000;
+      background: #1a1a1a;
       color: #fff;
       margin: 0;
     }
@@ -83,10 +83,14 @@
       html { scroll-behavior: smooth; }
     }
 
+    nav.fixed { background: rgba(26, 26, 26, 0.92); }
+    .about-portrait .portrait-fade {
+      background: linear-gradient(to bottom, transparent, transparent, rgba(26, 26, 26, 0.8));
+    }
     /* backdrop-blur is expensive on phones while scrolling */
     @media (max-width: 767px) {
       nav.fixed {
-        background: #000;
+        background: #1a1a1a;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
       }
@@ -98,9 +102,9 @@
     }
   </style>
 </head>
-<body class="bg-black text-white antialiased">
+<body class="text-white antialiased">
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-white/10" aria-label="Primary">
+  <nav class="fixed top-0 w-full backdrop-blur-sm z-50 border-b border-white/10" aria-label="Primary">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
       <a href="#home" class="font-display text-2xl tracking-tight">BW</a>
       <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase">
@@ -146,7 +150,7 @@
       </div>
       <div class="about-portrait relative overflow-hidden aspect-[3/4] w-full max-w-[280px] mx-auto md:mx-0 md:justify-self-end">
         <img src="headshot.jpg" alt="Brandon Webb" class="w-full h-full object-cover object-[72%_20%] md:object-[72%_22%] grayscale contrast-125" width="560" height="750" loading="lazy" decoding="async">
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80"></div>
+        <div class="portrait-fade pointer-events-none absolute inset-0"></div>
       </div>
     </div>
   </section>
